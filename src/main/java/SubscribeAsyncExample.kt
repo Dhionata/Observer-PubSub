@@ -7,14 +7,14 @@ object SubscribeAsyncExample {
     @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val projectId = "fasam-1984"
-        val topicId = "meu-topico"
-        val subscriptionId = "inscritos"
+        val projectId = "fasam-1984"//supergrupo
+        val topicId = "teste"//tópico
+        val subscriptionId = "inscritos"//grupoDeInscrições
         subscribeAsyncExample(projectId, subscriptionId, topicId)
     }
 
     private fun subscribeAsyncExample(projectId: String?, subscriptionId: String?, topicId: String?) {
-        val topicName = TopicName.of(topicId, subscriptionId)
+        val topicName = TopicName.of(projectId, topicId)
         val subscriptionName = ProjectSubscriptionName.of(projectId, subscriptionId)
         try {
             val subscriptionAdminClient = SubscriptionAdminClient.create()

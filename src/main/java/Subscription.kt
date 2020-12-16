@@ -8,7 +8,7 @@ object Subscription {
     @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val projectId = "fasam-1984"
+        val projectId = "fasam-1984"//supergrupo
         val mensagens = LinkedBlockingDeque<PubsubMessage>()
         val subscriptionId = "inscritos"
         val projectSubscriptionName = ProjectSubscriptionName.of(projectId, subscriptionId)

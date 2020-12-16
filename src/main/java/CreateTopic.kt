@@ -7,7 +7,7 @@ object CreateTopic {
     @JvmStatic
     fun main(args: Array<String>) {
         val projectId = "fasam-1984"
-        val topicId = "meu-topico"
+        val topicId = "teste"
 
         val topic = TopicName.of(projectId, topicId)
         try {
@@ -18,6 +18,6 @@ object CreateTopic {
             println(e.isRetryable)
             println(e.message)
         }
-        println("Topic ${topic.project}")
+        println("Topic ${topic.topic}")
     }
 }

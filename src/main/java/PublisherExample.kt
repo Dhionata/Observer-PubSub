@@ -10,8 +10,8 @@ object PublisherExample {
     @Throws(Exception::class)
     @JvmStatic
     fun main(args: Array<String>) {
-        val projectId = "fasam-1984"
-        val topicId = "meu-topico"
+        val projectId = "fasam-1984"//supergrupo
+        val topicId = "teste"//tópico
         publisherExample(projectId, topicId)
     }
 
