@@ -5,10 +5,12 @@ import com.google.pubsub.v1.PubsubMessage
 import java.util.concurrent.LinkedBlockingDeque
 
 object Incricao {
-    fun inscrever(projectid: String, assinantesId: String) {
-        //val projectId = projectid//supergrupo
+    @JvmStatic
+    fun main(args: Array<String>) {
+        //verificar execução paralela
         val mensagens = LinkedBlockingDeque<PubsubMessage>()
-        //val assinantesID = assinantesId
+        val projectid = "fasam-1984"
+        val assinantesId = "alienigenas"
         val nomeDosAssinantes = ProjectSubscriptionName.of(projectid, assinantesId)
         var assinante: Subscriber? = null
 

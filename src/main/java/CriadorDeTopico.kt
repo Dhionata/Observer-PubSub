@@ -4,10 +4,7 @@ import com.google.pubsub.v1.TopicName
 
 object CriadorDeTopico {
 
-    private fun criar(projetoID: String, topico: String) {
-        val projetoID = "fasam-1984"
-        val topicoID = "teste"
-
+    fun criar(projetoID: String, topicoID: String) {
         val nomeTopico = TopicName.of(projetoID, topicoID)
         try {
             val topicAdminClient = TopicAdminClient.create()

@@ -6,26 +6,22 @@ import java.util.concurrent.TimeUnit
 
 object Publicador {
 
-    fun publicar(projetoID: String, topicoID: String) {
-        //val projetoID = projetoID//supergrupo
-        //val topicoID = topicoID//tópico
-        publisherExample(projetoID, topicoID)
+    fun publicar(projetoID: String, topicoID: String, mensagem: String) {
+        publisherExample(projetoID, topicoID, mensagem)
     }
 
-    private fun publisherExample(projetoID: String?, topicoID: String?) {
+    private fun publisherExample(projetoID: String?, topicoID: String?, mensagem: String) {
         val nomeDoTopico = TopicName.of(projetoID, topicoID)
         var publicador: Publisher? = null
         try {
             publicador = Publisher.newBuilder(nomeDoTopico).build()
-            repeat(10) {
-                //mensagem
-                val mensagem = "Mensagem número $it"
-                //publicar mensagem
-                val menssagemFormatada =
-                    publicador.publish(PubsubMessage.newBuilder().setData(ByteString.copyFromUtf8(mensagem)).build())
-                println("Published message ID: ${menssagemFormatada.get()}")
-                println("Published message : $mensagem\n-----\n\n")
-            }
+
+            //publicar mensagem
+            val menssagemFormatada =
+                publicador.publish(PubsubMessage.newBuilder().setData(ByteString.copyFromUtf8(mensagem)).build())
+            println("ID da mensagem: ${menssagemFormatada.get()}")
+            println("Mensagem Publicada: $mensagem\n-----\n\n")
+
         } catch (e: Exception) {
             println("Erro ${e.message}")
         } finally {
