@@ -2,22 +2,18 @@ import com.google.api.gax.rpc.ApiException
 import com.google.cloud.pubsub.v1.TopicAdminClient
 import com.google.pubsub.v1.TopicName
 
-object CreateTopic {
-    @Throws(Exception::class)
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val projectId = "fasam-1984"
-        val topicId = "teste"
+object CriadorDeTopico {
 
-        val topic = TopicName.of(projectId, topicId)
+    fun criar(projetoID: String, topicoID: String) {
+        val nomeTopico = TopicName.of(projetoID, topicoID)
         try {
             val topicAdminClient = TopicAdminClient.create()
-            topicAdminClient.createTopic(topic)
+            topicAdminClient.createTopic(nomeTopico)
         } catch (e: ApiException) {
             println(e.statusCode.code)
             println(e.isRetryable)
             println(e.message)
         }
-        println("Topic ${topic.topic}")
+        println("Topic ${nomeTopico.topic}")
     }
 }

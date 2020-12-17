@@ -4,22 +4,22 @@ import com.google.pubsub.v1.ProjectSubscriptionName
 import com.google.pubsub.v1.PubsubMessage
 import java.util.concurrent.LinkedBlockingDeque
 
-object Subscription {
-    @Throws(Exception::class)
+object Incricao {
     @JvmStatic
     fun main(args: Array<String>) {
-        val projectId = "fasam-1984"//supergrupo
+        //verificar execução paralela
         val mensagens = LinkedBlockingDeque<PubsubMessage>()
-        val subscriptionId = "inscritos"
-        val projectSubscriptionName = ProjectSubscriptionName.of(projectId, subscriptionId)
-        var subscriber: Subscriber? = null
+        val projectid = "fasam-1984"
+        val assinantesId = "alienigenas"
+        val nomeDosAssinantes = ProjectSubscriptionName.of(projectid, assinantesId)
+        var assinante: Subscriber? = null
 
         try {
-            subscriber = Subscriber.newBuilder(projectSubscriptionName, MessageReceiver { message, consumer ->
+            assinante = Subscriber.newBuilder(nomeDosAssinantes, MessageReceiver { message, consumer ->
                 mensagens.offer(message)
                 consumer.ack()
             }).build()
-            subscriber.startAsync().awaitRunning()
+            assinante.startAsync().awaitRunning()
 
             while (true) {
                 val message = mensagens.take()
@@ -28,7 +28,7 @@ object Subscription {
         } catch (e: Exception) {
             println(e.message)
         } finally {
-            subscriber?.stopAsync()
+            assinante?.stopAsync()
         }
     }
 }
