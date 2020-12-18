@@ -9,11 +9,11 @@ object CriadorDeTopico {
         try {
             val topicAdminClient = TopicAdminClient.create()
             topicAdminClient.createTopic(nomeTopico)
+            println("Topic ${nomeTopico.topic}")
         } catch (e: ApiException) {
             println(e.statusCode.code)
             println(e.isRetryable)
             println(e.message)
         }
-        println("Topic ${nomeTopico.topic}")
     }
 }

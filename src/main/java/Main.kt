@@ -13,15 +13,9 @@ fun main(args: Array<String>) {
     CriadorDeTopico.criar(nomeDoProjeto, nomeDoTopico)
 
     val nomeAssinantes =
-        JOptionPane.showInputDialog(null, "Nome dos Assinantes", "SubscritionName", JOptionPane.QUESTION_MESSAGE)
+        JOptionPane.showInputDialog(null, "Nome do grupo", "SubscritionName", JOptionPane.QUESTION_MESSAGE)
 
-    Assinantes.Assinar(nomeDoProjeto, nomeDoTopico, nomeAssinantes)
-
-    /*object : Thread() {
-        override fun run() {
-            Incricao.main(args)
-        }
-    }.start()*/
+    Assinantes.assinar(nomeDoProjeto, nomeDoTopico, nomeAssinantes)
 
     do {
         val mensagens =

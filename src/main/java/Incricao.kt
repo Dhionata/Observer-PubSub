@@ -10,7 +10,7 @@ object Incricao {
         //verificar execução paralela
         val mensagens = LinkedBlockingDeque<PubsubMessage>()
         val projectid = "fasam-1984"
-        val assinantesId = "alienigenas"
+        val assinantesId = "GrupoWhatsApp"
         val nomeDosAssinantes = ProjectSubscriptionName.of(projectid, assinantesId)
         var assinante: Subscriber? = null
 

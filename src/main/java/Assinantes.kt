@@ -6,10 +6,9 @@ import java.util.concurrent.TimeUnit
 
 object Assinantes {
 
-    fun Assinar(projectId: String?, topicId: String?, assinantesID: String?) {
+    fun assinar(projectId: String?, topicId: String?, assinantesID: String?) {
         subscribeAsyncExample(projectId, assinantesID, topicId)
     }
-
     private fun subscribeAsyncExample(projectId: String?, subscriptionId: String?, topicId: String?) {
         val nomeDoTopico = TopicName.of(projectId, topicId)
         val nomeDosAssinantes = ProjectSubscriptionName.of(projectId, subscriptionId)
